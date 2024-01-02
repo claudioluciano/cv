@@ -16,7 +16,7 @@ interface ResumeData {
     social: {
       name: string;
       url: string;
-      icon: React.ComponentType;
+      icon: any;
     }[];
   };
   education: {
@@ -35,7 +35,7 @@ interface ResumeData {
     link?: string;
   }[];
   skills: string[];
-  projects?: {
+  projects: {
     title: string;
     description: string;
     link?: {
