@@ -1,278 +1,108 @@
-import {
-  AmbitLogo,
-  BarepapersLogo,
-  BimLogo,
-  CDGOLogo,
-  ClevertechLogo,
-  ConsultlyLogo,
-  EvercastLogo,
-  Howdy,
-  JarockiMeLogo,
-  JojoMobileLogo,
-  Minimal,
-  MobileVikingsLogo,
-  MonitoLogo,
-  NSNLogo,
-  ParabolLogo,
-  TastyCloudLogo,
-  YearProgressLogo,
-} from "@/images/logos";
-import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons";
+// import {AmbitLogo} from "@/images/logos";
+import { GitHubIcon, LinkedInIcon } from "@/components/icons";
 
 export const RESUME_DATA = {
-  name: "Bartosz Jarocki",
-  initials: "BJ",
-  location: "Wrocław, Poland, CET",
-  locationLink: "https://www.google.com/maps/place/Wrocław",
-  about:
-    "Full Stack Engineer focused on building products with extra attention to detail",
-  summary:
-    "As a Full Stack Engineer, I have successfully taken multiple products from 0 to 1. I lead teams effectively, ensuring an environment where people can do their best work. Currently, I work mostly with TypeScript, React, Node.js, and GraphQL. I have over 8 years of experience in working remotely with companies all around the world.",
-  avatarUrl: "https://avatars.githubusercontent.com/u/1017620?v=4",
-  personalWebsiteUrl: "https://jarocki.me",
+  name: "Claudio Luciano",
+  initials: "CL",
+  location: "Campo Grande, Mato Grosso do Sul, Brazil",
+  locationLink: "https://www.google.com/maps/place/Campo+Grande",
+  avatarUrl: "https://avatars.githubusercontent.com/u/16817398?v=4",
+  about: "Engenheiro de software experiente especializado em Golang e arquitetura de microsserviços.",
+  summary: "Como engenheiro de software, foco na criação de soluções completas, transformando conceitos em produtos concretos. Minha expertise concentra-se principalmente em Golang, arquitetura de microsserviços e soluções de conformidade. Conto com mais de 8 anos de experiência em colaborações remotas com empresas ao redor do mundo, buscando sempre impulsionar a inovação e a confiabilidade nos projetos em que me envolvo.",
   contact: {
-    email: "bartosz.jarocki@hey.com",
-    tel: "+48530213401",
+    email: "claudio_luciano@live.com",
+    tel: "+5567992360754",
     social: [
       {
-        name: "GitHub",
-        url: "https://github.com/BartoszJarocki",
-        icon: GitHubIcon,
-      },
-      {
         name: "LinkedIn",
-        url: "https://www.linkedin.com/in/bjarocki/",
-        icon: LinkedInIcon,
+        url: "www.linkedin.com/in/claudioluciano",
+        icon: LinkedInIcon
       },
       {
-        name: "X",
-        url: "https://x.com/BartoszJarocki",
-        icon: XIcon,
-      },
-    ],
+        name: "GitHub",
+        url: "github.com/claudioluciano",
+        icon: GitHubIcon
+      }
+    ]
   },
   education: [
     {
-      school: "Wrocław University of Technology",
-      degree: "Bachelor's Degree in Control systems engineering and Robotics",
-      start: "2007",
-      end: "2010",
-    },
+      school: "Estácio",
+      degree: "Análise e Desenvolvimento de Sistemas, Tecnologia da Informação",
+      start: "2018",
+      end: "2021"
+    }
   ],
   work: [
     {
-      company: "Parabol",
-      link: "https://parabol.co",
-      badges: ["Remote"],
-      title: "Senior Full Stack Developer",
-      logo: ParabolLogo,
-      start: "2021",
-      end: "2024",
-      description:
-        "Implemented new features, led squad, worked on improving the way developers ship the code, started migration from Emotion to Tailwind CSS and more. Technologies: React, TypeScript, GraphQL",
+      company: "Bexs",
+      title: "Software Engineer",
+      badges: ["Remoto"],
+      start: "August 2022",
+      end: "Presente",
+      description: "No Bexs, integro o time de compliance, focado no desenvolvimento de microserviços e testes automatizados. Utilizo Golang para construir os microserviços, além de empregar Karate para os testes de integração e End to End. Além disso, trabalho com a Google Cloud para viabilizar nossas soluções, contribuindo para a conformidade e robustez de nossos sistemas."
     },
     {
-      company: "Clevertech",
-      link: "https://clevertech.biz",
-      badges: ["Remote"],
-      title: "Lead Android Developer → Full Stack Developer",
-      logo: ClevertechLogo,
-      start: "2015",
-      end: "2021",
-      description:
-        "Created Android mobile apps and led teams for companies like Vision Media, DKMS, or AAA. Built live streaming application for Evercast from scratch. Technologies: Android, Kotlin, React, TypeScript, GraphQL",
+      company: "Soma Tech",
+      title: "Software Engineer",
+      badges: ["Remoto"],
+      start: "Junho 2021",
+      end: "Presente",
+      description: "Na Soma Tech, meu foco principal está no desenvolvimento de microserviços utilizando Golang, gRPC, e na criação de soluções móveis com Flutter. Participo ativamente na construção de arquiteturas sólidas de microserviços, bem como na criação de aplicativos móveis com Flutter. Utilizo e gerencio a plataforma da AWS, fortalecendo a infraestrutura necessária para suportar esses sistemas. Também contribuo ativamente na implementação de testes abrangentes, incluindo testes unitários, de integração e End to End, assegurando, em conjunto com a equipe, a qualidade e robustez dos produtos entregues."
     },
     {
-      company: "Jojo Mobile",
-      link: "https://bsgroup.eu/",
+      company: "FCamara Consulting & Training (Dasa)",
+      title: "Software Engineer",
+      badges: ["Remoto"],
+      start: "Junho 2021",
+      end: "Junho 2022",
+      description: "Na FCamara, atuei como Engenheiro de Software, trabalhando no desenvolvimento de URAs e Chatbots utilizando a plataforma Twilio. Utilizei ferramentas como Studio, TaskRouter, Functions, Flex e Autopilot, criando aplicações Serverless em Node.js. Meu papel envolveu a implementação e aprimoramento de sistemas de atendimento automatizado, garantindo interações eficientes e personalizadas para os usuários. Esta experiência demandou habilidades sólidas de programação, compreensão profunda da plataforma Twilio e foco na entrega de soluções inovadoras para melhorar a experiência do cliente."
+    },
+    {
+      company: "Upnid",
+      title: "Software Engineer",
+      badges: ["Remoto"],
+      start: "Maio 2020",
+      end: "Maio 2021",
+      description: "Na Upnid, atuei como Desenvolvedor Back End, contribuindo para o desenvolvimento de um gateway de pagamento seguro e eficiente. Contribuí com a construção e manutenção de microsserviços utilizando gRPC e Golang, garantindo funcionalidade contínua. Minhas responsabilidades incluíram a criação de componentes essenciais, como Single Sign-On (SSO), centralização de logs e integração do WhatsApp via Twilio. Esta função exigiu habilidades de resolução de problemas, expertise em design de sistemas e práticas ágeis de desenvolvimento, todas voltadas para fortalecer a confiabilidade e funcionalidade do nosso gateway de pagamento."
+    },
+    {
+      company: "SGI - Superintendência de Gestão da Informação",
+      title: "Software Engineer",
       badges: [],
-      title: "Android Developer → Lead Android Developer",
-      logo: JojoMobileLogo,
-      start: "2012",
-      end: "2015",
-      description:
-        "Built an Android team, created Android apps for biggest Polish companies like LOT, Polskie Radio, Agora, PolskaPress",
+      start: "Fevereiro 2019",
+      end: "Maio 2020",
+      description: "Na SGI - Superintendência de Gestão da Informação, atuei como Engenheiro de Software, desempenhando um papel crucial no desenvolvimento de projetos full-stack. Participei desde novos projetos até a gestão de sistemas legados, proporcionando contribuições essenciais para o backend do Aplicativo MS Digital. Minhas responsabilidades incluíram a manutenção de projetos legados, desenvolvimento de novos sistemas e apoio à infraestrutura de containers Docker. Esta experiência demandou habilidades multifacetadas, desde programação em C# e NodeJs até o trabalho com bancos de dados MSSQL, contribuindo significativamente para soluções tecnológicas de impacto no estado de Mato Grosso do Sul."
     },
     {
-      company: "Nokia Siemens Networks",
-      link: "https://www.nokia.com",
+      company: "Easynet",
+      title: "Software Engineer",
       badges: [],
-      title: "C/C++ Developer",
-      logo: NSNLogo,
-      start: "2010",
-      end: "2012",
-      description: "Creating and testing software for LTE base stations",
+      start: "Janeiro 2018",
+      end: "Janeiro 2019",
+      description: "Na easynet, atuei como Desenvolvedor .Net, desempenhando um papel integral no desenvolvimento full-stack de diversos projetos. Desde a criação de novos sistemas até a manutenção de projetos legados, participei ativamente no desenvolvimento e suporte de sistemas internos para clientes, incluindo projetos na Sanesul. Minhas responsabilidades abrangeram arquitetura de novos projetos, desenvolvimento e manutenção de sistemas, abrangendo tecnologias como C#, Node e Vue JS. Esta experiência exigiu habilidades versáteis de desenvolvimento e colaboração em equipe para fornecer soluções eficazes e suporte técnico consistente para os clientes da empresa."
     },
+    {
+      company: "CompNet",
+      title: "Software Engineer",
+      badges: [],
+      start: "Janeiro 2017",
+      end: "Janeiro 2018",
+      description: "Na CompNet, atuei como Desenvolvedor Full-Stack, envolvido no desenvolvimento de um novo produto de gerenciamento de despacho de viaturas (CADG). Trabalhei com tecnologias como C#, Node e Vue JS para contribuir na criação dessas soluções, proporcionando suporte técnico e colaborando no desenvolvimento do produto."
+    }
   ],
   skills: [
+    "Go",
+    "Microservices Architecture",
+    "Protobuf",
+    "gRPC",
+    "Docker",
     "JavaScript",
     "TypeScript",
-    "React/Next.js/Remix",
-    "Node.js",
     "GraphQL",
-    "Relay",
-    "WebRTC",
+    "Twilio (Studio, TaskRouter, Functions, Flex, Autopilot)",
+    "MongoDB",
+    "Vue.js"
   ],
-  projects: [
-    {
-      title: "Consultly",
-      techStack: [
-        "Side Project",
-        "TypeScript",
-        "Next.js",
-        "Vite",
-        "GraphQL",
-        "WebRTC",
-      ],
-      description: "A platform to build and grow your online business",
-      logo: ConsultlyLogo,
-      link: {
-        label: "consultly.com",
-        href: "https://consultly.com/",
-      },
-    },
-    {
-      title: "Monito",
-      techStack: ["Side Project", "TypeScript", "Next.js", "Browser Extension"],
-      description:
-        "Browser extension that records everything happening in a web application",
-      logo: MonitoLogo,
-      link: {
-        label: "monito.dev",
-        href: "https://monito.dev/",
-      },
-    },
-    {
-      title: "Jarocki.me",
-      techStack: ["Side Project", "Next.js", "MDX"],
-      description:
-        "My personal website and blog. Built with Next.js and Notion API",
-      logo: JarockiMeLogo,
-      link: {
-        label: "github.com",
-        href: "https://jarocki.me/",
-      },
-    },
-    {
-      title: "Minimal",
-      techStack: ["Side Project", "Next.js", "Puppeteer"],
-      description:
-        "Minimalist calendars, habit trackers and planners generator",
-      logo: Minimal,
-      link: {
-        label: "useminimal.com",
-        href: "https://useminimal.com/",
-      },
-    },
-    {
-      title: "Barepapers",
-      techStack: ["Side Project", "Next.js", "Puppeteer"],
-      description:
-        "Generates beautiful wallpapers using random shapes and gradients",
-      logo: BarepapersLogo,
-      link: {
-        label: "barepapers.com",
-        href: "https://barepapers.com/",
-      },
-    },
-    {
-      title: "Year progress",
-      techStack: ["Side Project", "TypeScript", "Next.js"],
-      description: "Tracks current year progress and displays a countdown",
-      logo: YearProgressLogo,
-      link: {
-        label: "getyearprogress.com",
-        href: "https://getyearprogress.com/",
-      },
-    },
-    {
-      title: "Parabol",
-      techStack: [
-        "Full Stack Developer",
-        "TypeScript",
-        "React",
-        "Node.js",
-        "GraphQL",
-      ],
-      description:
-        "The Agile meeting co-pilot that delivers better meetings with less effort",
-      logo: ParabolLogo,
-      link: {
-        label: "github.com",
-        href: "https://parabol.co/",
-      },
-    },
-    {
-      title: "Evercast",
-      techStack: [
-        "Lead Frontend Developer",
-
-        "TypeScript",
-        "React",
-        "Node.js",
-        "GraphQL",
-      ],
-      description:
-        "Creative collaboration platform that combines video conferencing and HD media streaming",
-      logo: EvercastLogo,
-      link: {
-        label: "evercast.us",
-        href: "https://www.evercast.us/",
-      },
-    },
-    {
-      title: "Mobile Vikings",
-      techStack: ["Lead Android Developer", "Android", "Kotlin"],
-      description:
-        "Android application for leading virtual mobile operator in Poland",
-      logo: MobileVikingsLogo,
-      link: {
-        label: "mobilevikings.pl",
-        href: "https://mobilevikings.pl/",
-      },
-    },
-    {
-      title: "Howdy",
-      techStack: ["Lead Android Developer", "Android", "Kotlin"],
-      description:
-        "Howdy is a place for you to join communities you care about",
-      logo: Howdy,
-      link: {
-        label: "play.google.com",
-        href: "https://howdy.co/",
-      },
-    },
-    {
-      title: "Tastycloud",
-      techStack: ["Lead Android Developer", "Android", "Kotlin"],
-      description:
-        "Android application for managing and displaying restaurant menus in kiosk mode",
-      logo: TastyCloudLogo,
-      link: {
-        label: "tastycloud.fr",
-        href: "https://www.tastycloud.fr/",
-      },
-    },
-    {
-      title: "Ambit",
-      techStack: ["Lead Android Developer", "Android", "Kotlin"],
-      description:
-        "Android application that helps with sharing your contact details",
-      logo: AmbitLogo,
-    },
-    {
-      title: "Bim",
-      techStack: ["Lead Android Developer", "Android", "Kotlin"],
-      description:
-        "Android application that helps with booking a table in a restaurants",
-      logo: BimLogo,
-    },
-    {
-      title: "Canal Digital GO",
-      techStack: ["Lead Android Developer", "Android", "Kotlin"],
-      description:
-        "Video streaming mobile application for Canal Digital subscribers",
-      logo: CDGOLogo,
-    },
-  ],
+  projects: []
 } as const;
