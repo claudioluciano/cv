@@ -60,12 +60,12 @@ export const RESUME_DATA: ResumeData = {
     social: [
       {
         name: "LinkedIn",
-        url: "www.linkedin.com/in/claudioluciano",
+        url: "https://linkedin.com/in/claudioluciano",
         icon: LinkedInIcon
       },
       {
         name: "GitHub",
-        url: "github.com/claudioluciano",
+        url: "https://github.com/claudioluciano",
         icon: GitHubIcon
       }
     ]
