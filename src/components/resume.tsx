@@ -186,9 +186,19 @@ export function Resume({ locale }: ResumeProps) {
                       {work.title}
                     </h4>
                   </CardHeader>
-                  <CardContent className="mt-2 text-xs">
-                    {work.description}
-                  </CardContent>
+                  {work.highlights ? (
+                    <CardContent className="mt-2 text-xs">
+                      <ul className="list-disc space-y-1 pl-4">
+                        {work.highlights.map((highlight) => (
+                          <li key={highlight}>{highlight}</li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  ) : work.description ? (
+                    <CardContent className="mt-2 text-xs">
+                      {work.description}
+                    </CardContent>
+                  ) : null}
                 </Card>
               );
             })}
@@ -218,6 +228,18 @@ export function Resume({ locale }: ResumeProps) {
             <div className="flex flex-wrap gap-1">
               {resumeData.skills.map((skill) => {
                 return <Badge key={skill}>{skill}</Badge>;
+              })}
+            </div>
+          </Section>
+          <Section className="animate-fade-in">
+            <h2 className="text-xl font-bold">{resumeData.labels.languages}</h2>
+            <div className="flex flex-wrap gap-1">
+              {resumeData.languages.map((language) => {
+                return (
+                  <Badge key={language.language} variant="secondary">
+                    {language.language} - {language.fluency}
+                  </Badge>
+                );
               })}
             </div>
           </Section>

@@ -19,6 +19,7 @@ type ResumeLabels = {
   workExperience: string;
   education: string;
   skills: string;
+  languages: string;
   projects: string;
   personalWebsite: string;
   actions: string;
@@ -60,10 +61,15 @@ type ResumeLocaleData = {
     badges: string[];
     start: string;
     end: string;
-    description: string;
+    description?: string;
+    highlights?: string[];
     link?: string;
   }[];
   skills: string[];
+  languages: {
+    language: string;
+    fluency: string;
+  }[];
   projects: {
     title: string;
     description: string;
@@ -105,17 +111,18 @@ const COMMON_RESUME_DATA: ResumeCommonData = {
 const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
   pt: {
     about:
-      "Engenheiro de software especializado em Golang, microsservicos e sistemas distribuidos.",
+      "Senior Software Engineer especializado em Golang, microsserviços e sistemas distribuídos.",
     summary:
-      "Engenheiro de software com mais de 8 anos de experiencia na criacao de produtos e plataformas distribuidas para empresas remotas e internacionais. Forte atuacao em Golang, arquitetura de microsservicos, gRPC, Kafka, cloud, observabilidade e testes automatizados. Tenho experiencia em dominios como varejo, pagamentos, compliance, governo digital e atendimento automatizado, sempre com foco em confiabilidade, manutencao evolutiva e entrega de valor tecnico para o negocio.",
+      "Senior Software Engineer com mais de 8 anos de experiência na criação de produtos e plataformas distribuídas em times remotos, internacionais e cross-functional. Forte atuação em Golang, arquitetura de microsserviços, gRPC, Kafka, cloud, observabilidade e testes automatizados. Tenho experiência em domínios como varejo, pagamentos, compliance, governo digital e atendimento automatizado, sempre com foco em confiabilidade, manutenção evolutiva e entrega de valor técnico para o negócio.",
     labels: {
       about: "Sobre",
-      workExperience: "Experiencia Profissional",
-      education: "Formacao",
-      skills: "Competencias",
+      workExperience: "Experiência Profissional",
+      education: "Formação",
+      skills: "Competências",
+      languages: "Idiomas",
       projects: "Projetos",
       personalWebsite: "Site pessoal",
-      actions: "Acoes",
+      actions: "Ações",
       links: "Links",
       print: "Imprimir",
       noResults: "Nenhum resultado encontrado.",
@@ -125,9 +132,9 @@ const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
     },
     education: [
       {
-        school: "Estacio",
+        school: "Estácio",
         degree:
-          "Analise e Desenvolvimento de Sistemas, Tecnologia da Informacao",
+          "Análise e Desenvolvimento de Sistemas, Tecnologia da Informação",
         start: "2018",
         end: "2021",
       },
@@ -139,9 +146,12 @@ const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
         badges: ["Remoto"],
         start: "Maio 2024",
         end: "Presente",
-        description:
-          "Desenvolvo microservicos em Golang com gRPC e Kafka, colaborando na evolucao de arquiteturas escalaveis e confiaveis. Trabalho na modelagem de bancos de dados, observabilidade, metricas e integracao com servicos AWS. Tambem contribuo para estrategias de qualidade com testes unitarios, de integracao e end-to-end.",
-        link: "https://worten.pt",
+        highlights: [
+          "Desenvolvo microsserviços em Go com gRPC e Kafka, contribuindo para arquiteturas escaláveis e confiáveis.",
+          "Atuo em modelagem de dados, observabilidade, métricas e integrações com serviços AWS.",
+          "Fortaleço a qualidade das entregas com testes unitários, de integração e end-to-end.",
+        ],
+        link: "https://www.worten.pt/",
       },
       {
         company: "Bexs",
@@ -149,9 +159,12 @@ const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
         badges: ["Remoto"],
         start: "Agosto 2022",
         end: "Janeiro 2024",
-        description:
-          "Atuei no time de compliance, desenvolvendo microservicos em Golang e automacoes de testes para fluxos regulatorios. Implementei testes de integracao e end-to-end com Karate, alem de solucoes escalaveis na Google Cloud Platform para fortalecer a conformidade e a robustez dos sistemas.",
-        link: "https://bexs.com.br",
+        highlights: [
+          "Desenvolvi microsserviços em Go para fluxos de compliance e processos regulatórios.",
+          "Implementei automações de testes de integração e end-to-end com Karate.",
+          "Contribuí para soluções na Google Cloud Platform com foco em robustez e confiabilidade regulatória.",
+        ],
+        link: "https://br.ebury.com/en",
       },
       {
         company: "Soma Tech",
@@ -159,8 +172,11 @@ const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
         badges: ["Remoto"],
         start: "Junho 2021",
         end: "Janeiro 2024",
-        description:
-          "Desenvolvi microservicos com Golang e gRPC, aplicacoes moveis com Flutter e componentes para sistemas distribuidos. Colaborei na definicao de arquitetura, modelagem de dados, observabilidade, provisionamento em AWS e pipelines de testes automatizados.",
+        highlights: [
+          "Construí microsserviços com Go e gRPC, além de aplicações móveis com Flutter.",
+          "Colaborei em arquitetura de sistemas distribuídos, modelagem de dados e observabilidade.",
+          "Contribuí para provisionamento em AWS e pipelines de testes automatizados.",
+        ],
         link: "https://somatech.solutions/",
       },
       {
@@ -169,9 +185,12 @@ const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
         badges: ["Remoto"],
         start: "Junho 2021",
         end: "Junho 2022",
-        description:
-          "Desenvolvi URAs, chatbots e automacoes de atendimento com Twilio Studio, TaskRouter, Functions, Flex e Autopilot. Criei aplicacoes serverless em Node.js e contribui para otimizar canais de atendimento automatizado, melhorando eficiencia operacional e experiencia do usuario.",
-        link: "#",
+        highlights: [
+          "Desenvolvi URAs, chatbots e automações de atendimento com Twilio Studio, TaskRouter, Functions, Flex e Autopilot.",
+          "Criei aplicações serverless em Node.js para fluxos de atendimento automatizado.",
+          "Contribuí para melhorar a eficiência operacional e a experiência do usuário em canais digitais.",
+        ],
+        link: "https://dasa.com.br/",
       },
       {
         company: "Upnid",
@@ -179,19 +198,20 @@ const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
         badges: ["Remoto"],
         start: "Maio 2020",
         end: "Maio 2021",
-        description:
-          "Contribui para a evolucao de um gateway de pagamento, construindo e mantendo microservicos em Golang e gRPC. Participei de componentes criticos como Single Sign-On, centralizacao de logs e integracao com WhatsApp via Twilio.",
-        link: "#",
+        highlights: [
+          "Construí e mantive microsserviços em Go e gRPC para um gateway de pagamento.",
+          "Participei de componentes críticos como Single Sign-On, centralização de logs e integração com WhatsApp via Twilio.",
+          "Colaborei na evolução de uma plataforma voltada a pagamentos e vendas online.",
+        ],
+        link: "https://upnid.com/",
       },
       {
-        company: "SGI - Superintendencia de Gestao da Informacao",
+        company: "SGI - Superintendência de Gestão da Informação",
         title: "Software Engineer",
         badges: [],
         start: "Fevereiro 2019",
         end: "Maio 2020",
-        description:
-          "Atuei em projetos full-stack para servicos digitais governamentais, incluindo manutencao de sistemas legados e desenvolvimento de novas funcionalidades. Trabalhei no backend do aplicativo MS Digital com C#, Node.js, MSSQL e Docker.",
-        link: "#",
+        link: "https://www.setdig.ms.gov.br/",
       },
       {
         company: "Easynet",
@@ -199,9 +219,7 @@ const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
         badges: [],
         start: "Janeiro 2018",
         end: "Janeiro 2019",
-        description:
-          "Desenvolvi sistemas internos e aplicacoes sob demanda para clientes, incluindo projetos para a Sanesul. Trabalhei com C#, Node.js e Vue.js em manutencao, novas funcionalidades e evolucao arquitetural.",
-        link: "#",
+        link: "https://easynet.com.br/",
       },
       {
         company: "CompNet",
@@ -209,42 +227,58 @@ const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
         badges: [],
         start: "Janeiro 2017",
         end: "Janeiro 2018",
-        description:
-          "Participei do desenvolvimento de um sistema de gerenciamento de despacho de viaturas, implementando funcionalidades e prestando suporte tecnico. Trabalhei com C#, Node.js e Vue.js ao longo do ciclo de desenvolvimento do produto.",
-        link: "#",
+        link: "https://cadg.sigo.ms.gov.br/",
       },
     ],
     skills: [
       "Go",
-      "Microservices Architecture",
-      "Distributed Systems",
-      "Protobuf",
       "gRPC",
       "Kafka",
-      "Docker",
+      "Protobuf",
+      "Microsserviços",
+      "Sistemas Distribuídos",
       "AWS",
       "Google Cloud Platform",
-      "JavaScript",
-      "TypeScript",
+      "Docker",
+      "Observabilidade",
+      "Testes Automatizados",
       "Node.js",
-      "GraphQL",
+      "TypeScript",
       "Twilio",
-      "MongoDB",
-      "Vue.js",
-      "Flutter",
     ],
-    projects: [],
+    languages: [
+      {
+        language: "Português",
+        fluency: "Nativo",
+      },
+      {
+        language: "Inglês",
+        fluency: "Profissional (B2)",
+      },
+    ],
+    projects: [
+      {
+        title: "VolumeHub",
+        description:
+          "Aplicativo nativo para macOS com controle de volume por app, visualização de áudio em tempo real e modos simples/pro, construído com SwiftUI sobre a Audio Tap API da Apple, sem kernel extensions ou drivers de áudio.",
+        link: {
+          href: "https://volumehub.app",
+        },
+        techStack: ["SwiftUI", "macOS", "Audio Tap API", "App Store"],
+      },
+    ],
   },
   en: {
     about:
-      "Software engineer specialized in Golang, microservices, and distributed systems.",
+      "Senior Software Engineer specialized in Golang, microservices, and distributed systems.",
     summary:
-      "Software engineer with 8+ years of experience building distributed products and platforms for remote and international companies. Strong background in Golang, microservice architecture, gRPC, Kafka, cloud infrastructure, observability, and automated testing. I have worked across retail, payments, compliance, digital government, and automated customer-service domains, with a focus on reliability, maintainability, and practical technical value.",
+      "Senior Software Engineer with 8+ years of experience building distributed products and platforms in remote-first, international, and cross-functional teams. Strong background in Golang, microservice architecture, gRPC, Kafka, cloud infrastructure, observability, and automated testing. I have worked across retail, payments, compliance, digital government, and automated customer-service domains, with a focus on reliability, maintainability, and practical technical value.",
     labels: {
       about: "About",
       workExperience: "Work Experience",
       education: "Education",
       skills: "Skills",
+      languages: "Languages",
       projects: "Projects",
       personalWebsite: "Personal Website",
       actions: "Actions",
@@ -257,7 +291,7 @@ const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
     },
     education: [
       {
-        school: "Estacio",
+        school: "Estácio",
         degree: "Systems Analysis and Development, Information Technology",
         start: "2018",
         end: "2021",
@@ -270,9 +304,12 @@ const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
         badges: ["Remote"],
         start: "May 2024",
         end: "Present",
-        description:
-          "Build microservices in Golang with gRPC and Kafka, contributing to scalable and reliable architecture. Work on database design, observability, metrics, and AWS service integrations. Also contribute to quality strategy through unit, integration, and end-to-end testing.",
-        link: "https://worten.pt",
+        highlights: [
+          "Build Go microservices with gRPC and Kafka, contributing to scalable and reliable architecture.",
+          "Work on data modeling, observability, metrics, and AWS service integrations.",
+          "Strengthen delivery quality with unit, integration, and end-to-end testing.",
+        ],
+        link: "https://www.worten.pt/",
       },
       {
         company: "Bexs",
@@ -280,9 +317,12 @@ const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
         badges: ["Remote"],
         start: "August 2022",
         end: "January 2024",
-        description:
-          "Worked on the compliance team, building Golang microservices and test automation for regulatory workflows. Implemented integration and end-to-end tests with Karate, along with scalable Google Cloud Platform solutions that improved system robustness and regulatory reliability.",
-        link: "https://bexs.com.br",
+        highlights: [
+          "Built Go microservices for compliance workflows and regulatory processes.",
+          "Implemented integration and end-to-end test automation with Karate.",
+          "Contributed to Google Cloud Platform solutions focused on robustness and regulatory reliability.",
+        ],
+        link: "https://br.ebury.com/en",
       },
       {
         company: "Soma Tech",
@@ -290,8 +330,11 @@ const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
         badges: ["Remote"],
         start: "June 2021",
         end: "January 2024",
-        description:
-          "Built microservices with Golang and gRPC, mobile applications with Flutter, and components for distributed systems. Collaborated on architecture, data modeling, observability, AWS provisioning, and automated testing pipelines.",
+        highlights: [
+          "Built Go/gRPC microservices, Flutter mobile applications, and components for distributed systems.",
+          "Collaborated on architecture, data modeling, and observability practices.",
+          "Contributed to AWS provisioning and automated testing pipelines.",
+        ],
         link: "https://somatech.solutions/",
       },
       {
@@ -300,9 +343,12 @@ const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
         badges: ["Remote"],
         start: "June 2021",
         end: "June 2022",
-        description:
-          "Built IVRs, chatbots, and customer-service automations with Twilio Studio, TaskRouter, Functions, Flex, and Autopilot. Created serverless Node.js applications and helped optimize automated service channels to improve operational efficiency and user experience.",
-        link: "#",
+        highlights: [
+          "Built IVRs, chatbots, and customer-service automations with Twilio Studio, TaskRouter, Functions, Flex, and Autopilot.",
+          "Created serverless Node.js applications for automated service workflows.",
+          "Helped improve operational efficiency and user experience across digital service channels.",
+        ],
+        link: "https://dasa.com.br/",
       },
       {
         company: "Upnid",
@@ -310,19 +356,20 @@ const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
         badges: ["Remote"],
         start: "May 2020",
         end: "May 2021",
-        description:
-          "Contributed to a payment gateway by building and maintaining Golang and gRPC microservices. Worked on critical components including Single Sign-On, centralized logging, and WhatsApp integration through Twilio.",
-        link: "#",
+        highlights: [
+          "Built and maintained Go/gRPC microservices for a payment gateway.",
+          "Worked on critical components including Single Sign-On, centralized logging, and WhatsApp integration through Twilio.",
+          "Contributed to the evolution of a platform for online payments and digital sales.",
+        ],
+        link: "https://upnid.com/",
       },
       {
-        company: "SGI - Superintendencia de Gestao da Informacao",
+        company: "SGI - Superintendência de Gestão da Informação",
         title: "Software Engineer",
         badges: [],
         start: "February 2019",
         end: "May 2020",
-        description:
-          "Worked on full-stack projects for government digital services, including legacy maintenance and new feature development. Contributed to the backend of the MS Digital application using C#, Node.js, MSSQL, and Docker.",
-        link: "#",
+        link: "https://www.setdig.ms.gov.br/",
       },
       {
         company: "Easynet",
@@ -330,9 +377,7 @@ const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
         badges: [],
         start: "January 2018",
         end: "January 2019",
-        description:
-          "Built internal systems and custom applications for clients, including strategic projects for Sanesul. Worked with C#, Node.js, and Vue.js on maintenance, new features, and architectural improvements.",
-        link: "#",
+        link: "https://easynet.com.br/",
       },
       {
         company: "CompNet",
@@ -340,31 +385,46 @@ const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
         badges: [],
         start: "January 2017",
         end: "January 2018",
-        description:
-          "Helped develop a vehicle dispatch management system, implementing product features and providing technical support. Worked with C#, Node.js, and Vue.js throughout the product development lifecycle.",
-        link: "#",
+        link: "https://cadg.sigo.ms.gov.br/",
       },
     ],
     skills: [
       "Go",
-      "Microservices Architecture",
-      "Distributed Systems",
-      "Protobuf",
       "gRPC",
       "Kafka",
-      "Docker",
+      "Protobuf",
+      "Microservices",
+      "Distributed Systems",
       "AWS",
       "Google Cloud Platform",
-      "JavaScript",
-      "TypeScript",
+      "Docker",
+      "Observability",
+      "Automated Testing",
       "Node.js",
-      "GraphQL",
+      "TypeScript",
       "Twilio",
-      "MongoDB",
-      "Vue.js",
-      "Flutter",
     ],
-    projects: [],
+    languages: [
+      {
+        language: "Portuguese",
+        fluency: "Native",
+      },
+      {
+        language: "English",
+        fluency: "Professional (B2)",
+      },
+    ],
+    projects: [
+      {
+        title: "VolumeHub",
+        description:
+          "Native macOS app for per-app volume control, live audio meters, and simple/pro modes, built with SwiftUI on Apple's Audio Tap API without kernel extensions or audio drivers.",
+        link: {
+          href: "https://volumehub.app",
+        },
+        techStack: ["SwiftUI", "macOS", "Audio Tap API", "App Store"],
+      },
+    ],
   },
 } as const;
 

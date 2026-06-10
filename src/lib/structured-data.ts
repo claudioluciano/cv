@@ -50,6 +50,7 @@ export function generatePersonStructuredData(locale: Locale) {
       occupationalCategory: "Software Engineering",
     })),
     knowsAbout: resumeData.skills,
+    knowsLanguage: resumeData.languages.map((language) => language.language),
   };
 }
 
