@@ -1,24 +1,53 @@
-// import {AmbitLogo} from "@/images/logos";
+import type { ComponentType } from "react";
+
 import { GitHubIcon, LinkedInIcon } from "@/components/icons";
 
-interface ResumeData {
+export const LOCALES = ["pt", "en"] as const;
+
+export type Locale = (typeof LOCALES)[number];
+
+export const DEFAULT_LOCALE: Locale = "pt";
+
+type SocialLink = {
+  name: string;
+  url: string;
+  icon: ComponentType<{ className?: string }>;
+};
+
+type ResumeLabels = {
+  about: string;
+  workExperience: string;
+  education: string;
+  skills: string;
+  projects: string;
+  personalWebsite: string;
+  actions: string;
+  links: string;
+  print: string;
+  noResults: string;
+  searchPlaceholder: string;
+  commandHintPrefix: string;
+  commandHintSuffix: string;
+};
+
+type ResumeCommonData = {
   personalWebsiteUrl: string;
   name: string;
   initials: string;
   location: string;
   locationLink: string;
   avatarUrl: string;
-  about: string;
-  summary: string;
   contact: {
     email: string;
     tel: string;
-    social: {
-      name: string;
-      url: string;
-      icon: any;
-    }[];
+    social: SocialLink[];
   };
+};
+
+type ResumeLocaleData = {
+  about: string;
+  summary: string;
+  labels: ResumeLabels;
   education: {
     school: string;
     degree: string;
@@ -40,20 +69,21 @@ interface ResumeData {
     description: string;
     link?: {
       href: string;
-    }
+    };
     techStack: string[];
   }[];
-}
+};
 
-export const RESUME_DATA: ResumeData = {
+export type ResumeData = ResumeCommonData & ResumeLocaleData;
+
+const COMMON_RESUME_DATA: ResumeCommonData = {
   personalWebsiteUrl: "https://claudioluciano.dev",
   name: "Claudio Luciano",
   initials: "CL",
-  location: "World",
+  location: "Porto, Portugal",
   locationLink: "https://www.google.com/maps/place/Porto",
-  avatarUrl: "https://media.licdn.com/dms/image/v2/C4D03AQFWrthTQQjx-w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1578338150825?e=1756339200&v=beta&t=HUWr18_HBK0wfzt4JidmZaM6kHMJphKklsrEtEUk28Y",
-  about: "Engenheiro de software experiente especializado em Golang e arquitetura de microsserviços.",
-  summary: "Como engenheiro de software, foco na criação de soluções completas, transformando conceitos em produtos concretos. Minha expertise concentra-se principalmente em Golang, arquitetura de microsserviços e soluções de conformidade. Conto com mais de 8 anos de experiência em colaborações remotas com empresas ao redor do mundo, buscando sempre impulsionar a inovação e a confiabilidade nos projetos em que me envolvo.",
+  avatarUrl:
+    "https://media.licdn.com/dms/image/v2/D4E03AQHry9_keSqfUA/profile-displayphoto-scale_400_400/B4EZ6yTVyPKoAk-/0/1781107877326?e=1782950400&v=beta&t=hx4pFK4bbZ0poSVNh8_nfMao9WGasz36CwWkkCWadC4",
   contact: {
     email: "claudio_luciano@live.com",
     tel: "+351 916 448 661",
@@ -61,109 +91,290 @@ export const RESUME_DATA: ResumeData = {
       {
         name: "LinkedIn",
         url: "https://linkedin.com/in/claudioluciano",
-        icon: LinkedInIcon
+        icon: LinkedInIcon,
       },
       {
         name: "GitHub",
         url: "https://github.com/claudioluciano",
-        icon: GitHubIcon
-      }
-    ]
+        icon: GitHubIcon,
+      },
+    ],
   },
-  education: [
-    {
-      school: "Estácio",
-      degree: "Análise e Desenvolvimento de Sistemas, Tecnologia da Informação",
-      start: "2018",
-      end: "2021"
-    }
-  ],
-  work: [
-     {
-      company: "Worten",
-      title: "Software Engineer",
-      badges: ["Remoto"],
-      start: "Maio 2024",
-      end: "Presente",
-      description: "Atuo no desenvolvimento de microserviços utilizando Golang, gRPC e Kafka, colaborando na construção de arquiteturas robustas e escaláveis. Participo da estruturação de bancos de dados e implementação de métricas para observabilidade, contribuindo para o monitoramento e performance dos sistemas. Trabalho com a plataforma AWS, auxiliando no fortalecimento da infraestrutura necessária para suportar os microserviços. Colaboro ativamente na implementação de estratégias de testes abrangentes, incluindo testes unitários, de integração e End-to-End, garantindo junto à equipe a qualidade e confiabilidade dos produtos entregues.",
-      link: "https://worten.pt"
+};
+
+const RESUME_LOCALE_DATA: Record<Locale, ResumeLocaleData> = {
+  pt: {
+    about:
+      "Engenheiro de software especializado em Golang, microsservicos e sistemas distribuidos.",
+    summary:
+      "Engenheiro de software com mais de 8 anos de experiencia na criacao de produtos e plataformas distribuidas para empresas remotas e internacionais. Forte atuacao em Golang, arquitetura de microsservicos, gRPC, Kafka, cloud, observabilidade e testes automatizados. Tenho experiencia em dominios como varejo, pagamentos, compliance, governo digital e atendimento automatizado, sempre com foco em confiabilidade, manutencao evolutiva e entrega de valor tecnico para o negocio.",
+    labels: {
+      about: "Sobre",
+      workExperience: "Experiencia Profissional",
+      education: "Formacao",
+      skills: "Competencias",
+      projects: "Projetos",
+      personalWebsite: "Site pessoal",
+      actions: "Acoes",
+      links: "Links",
+      print: "Imprimir",
+      noResults: "Nenhum resultado encontrado.",
+      searchPlaceholder: "Digite um comando ou pesquise...",
+      commandHintPrefix: "Pressione",
+      commandHintSuffix: "para abrir o menu de comandos",
     },
-    {
-      company: "Bexs",
-      title: "Software Engineer",
-      badges: ["Remoto"],
-      start: "Agosto 2022",
-      end: "Janeiro 2024",
-      description: "Integrei o time de compliance, focando no desenvolvimento de microserviços e automação de testes. Desenvolvi soluções em Golang e implementei testes de integração e End-to-End utilizando Karate. Trabalhei com Google Cloud Platform para arquitetar e implementar soluções escaláveis, contribuindo para a conformidade regulatória e robustez dos sistemas de compliance da empresa.",
-      link: "https://bexs.com.br"
+    education: [
+      {
+        school: "Estacio",
+        degree:
+          "Analise e Desenvolvimento de Sistemas, Tecnologia da Informacao",
+        start: "2018",
+        end: "2021",
+      },
+    ],
+    work: [
+      {
+        company: "Worten",
+        title: "Software Engineer",
+        badges: ["Remoto"],
+        start: "Maio 2024",
+        end: "Presente",
+        description:
+          "Desenvolvo microservicos em Golang com gRPC e Kafka, colaborando na evolucao de arquiteturas escalaveis e confiaveis. Trabalho na modelagem de bancos de dados, observabilidade, metricas e integracao com servicos AWS. Tambem contribuo para estrategias de qualidade com testes unitarios, de integracao e end-to-end.",
+        link: "https://worten.pt",
+      },
+      {
+        company: "Bexs",
+        title: "Software Engineer",
+        badges: ["Remoto"],
+        start: "Agosto 2022",
+        end: "Janeiro 2024",
+        description:
+          "Atuei no time de compliance, desenvolvendo microservicos em Golang e automacoes de testes para fluxos regulatorios. Implementei testes de integracao e end-to-end com Karate, alem de solucoes escalaveis na Google Cloud Platform para fortalecer a conformidade e a robustez dos sistemas.",
+        link: "https://bexs.com.br",
+      },
+      {
+        company: "Soma Tech",
+        title: "Software Engineer",
+        badges: ["Remoto"],
+        start: "Junho 2021",
+        end: "Janeiro 2024",
+        description:
+          "Desenvolvi microservicos com Golang e gRPC, aplicacoes moveis com Flutter e componentes para sistemas distribuidos. Colaborei na definicao de arquitetura, modelagem de dados, observabilidade, provisionamento em AWS e pipelines de testes automatizados.",
+        link: "https://somatech.solutions/",
+      },
+      {
+        company: "Dasa",
+        title: "Software Engineer",
+        badges: ["Remoto"],
+        start: "Junho 2021",
+        end: "Junho 2022",
+        description:
+          "Desenvolvi URAs, chatbots e automacoes de atendimento com Twilio Studio, TaskRouter, Functions, Flex e Autopilot. Criei aplicacoes serverless em Node.js e contribui para otimizar canais de atendimento automatizado, melhorando eficiencia operacional e experiencia do usuario.",
+        link: "#",
+      },
+      {
+        company: "Upnid",
+        title: "Software Engineer",
+        badges: ["Remoto"],
+        start: "Maio 2020",
+        end: "Maio 2021",
+        description:
+          "Contribui para a evolucao de um gateway de pagamento, construindo e mantendo microservicos em Golang e gRPC. Participei de componentes criticos como Single Sign-On, centralizacao de logs e integracao com WhatsApp via Twilio.",
+        link: "#",
+      },
+      {
+        company: "SGI - Superintendencia de Gestao da Informacao",
+        title: "Software Engineer",
+        badges: [],
+        start: "Fevereiro 2019",
+        end: "Maio 2020",
+        description:
+          "Atuei em projetos full-stack para servicos digitais governamentais, incluindo manutencao de sistemas legados e desenvolvimento de novas funcionalidades. Trabalhei no backend do aplicativo MS Digital com C#, Node.js, MSSQL e Docker.",
+        link: "#",
+      },
+      {
+        company: "Easynet",
+        title: "Software Engineer",
+        badges: [],
+        start: "Janeiro 2018",
+        end: "Janeiro 2019",
+        description:
+          "Desenvolvi sistemas internos e aplicacoes sob demanda para clientes, incluindo projetos para a Sanesul. Trabalhei com C#, Node.js e Vue.js em manutencao, novas funcionalidades e evolucao arquitetural.",
+        link: "#",
+      },
+      {
+        company: "CompNet",
+        title: "Software Engineer",
+        badges: [],
+        start: "Janeiro 2017",
+        end: "Janeiro 2018",
+        description:
+          "Participei do desenvolvimento de um sistema de gerenciamento de despacho de viaturas, implementando funcionalidades e prestando suporte tecnico. Trabalhei com C#, Node.js e Vue.js ao longo do ciclo de desenvolvimento do produto.",
+        link: "#",
+      },
+    ],
+    skills: [
+      "Go",
+      "Microservices Architecture",
+      "Distributed Systems",
+      "Protobuf",
+      "gRPC",
+      "Kafka",
+      "Docker",
+      "AWS",
+      "Google Cloud Platform",
+      "JavaScript",
+      "TypeScript",
+      "Node.js",
+      "GraphQL",
+      "Twilio",
+      "MongoDB",
+      "Vue.js",
+      "Flutter",
+    ],
+    projects: [],
+  },
+  en: {
+    about:
+      "Software engineer specialized in Golang, microservices, and distributed systems.",
+    summary:
+      "Software engineer with 8+ years of experience building distributed products and platforms for remote and international companies. Strong background in Golang, microservice architecture, gRPC, Kafka, cloud infrastructure, observability, and automated testing. I have worked across retail, payments, compliance, digital government, and automated customer-service domains, with a focus on reliability, maintainability, and practical technical value.",
+    labels: {
+      about: "About",
+      workExperience: "Work Experience",
+      education: "Education",
+      skills: "Skills",
+      projects: "Projects",
+      personalWebsite: "Personal Website",
+      actions: "Actions",
+      links: "Links",
+      print: "Print",
+      noResults: "No results found.",
+      searchPlaceholder: "Type a command or search...",
+      commandHintPrefix: "Press",
+      commandHintSuffix: "to open the command menu",
     },
-    {
-      company: "Soma Tech",
-      title: "Software Engineer",
-      badges: ["Remoto"],
-      start: "Junho 2021",
-      end: "Janeiro 2024",
-      description: "Desenvolvi microserviços utilizando Golang e gRPC, além de aplicações móveis com Flutter. Colaborei na arquitetura de sistemas distribuídos, estruturação de bancos de dados e implementação de métricas para observabilidade. Utilizei AWS para provisionamento e gerenciamento de infraestrutura cloud. Participei da implementação de pipelines de testes abrangentes, incluindo testes unitários, de integração e End-to-End, assegurando junto à equipe a qualidade e performance dos produtos desenvolvidos.",
-      link: "https://somatech.solutions/"
-    },
-    {
-      company: "Dasa",
-      title: "Software Engineer",
-      badges: ["Remoto"],
-      start: "Junho 2021",
-      end: "Junho 2022",
-      description: "Desenvolvi URAs e Chatbots utilizando a plataforma Twilio, trabalhando com Studio, TaskRouter, Functions, Flex e Autopilot. Criei aplicações serverless em Node.js para automação de atendimento ao cliente. Colaborei na implementação e otimização de sistemas de atendimento automatizado, contribuindo para melhorar a experiência do usuário e eficiência operacional dos canais de comunicação da empresa.",
-      link: "#"
-    },
-    {
-      company: "Upnid",
-      title: "Software Engineer",
-      badges: ["Remoto"],
-      start: "Maio 2020",
-      end: "Maio 2021",
-      description: "Contribuí para o desenvolvimento de um gateway de pagamento, construindo e mantendo microserviços utilizando gRPC e Golang. Participei da criação de componentes críticos como Single Sign-On (SSO), centralização de logs e integração com WhatsApp via Twilio. Colaborei na implementação de práticas de desenvolvimento ágil e design de sistemas distribuídos, fortalecendo a confiabilidade e segurança da plataforma de pagamentos.",
-      link: "#"
-    },
-    {
-      company: "SGI - Superintendência de Gestão da Informação",
-      title: "Software Engineer",
-      badges: [],
-      start: "Fevereiro 2019",
-      end: "Maio 2020",
-      description: "Participei do desenvolvimento de projetos full-stack, desde novos sistemas até manutenção de aplicações legadas. Contribuí para o backend do Aplicativo MS Digital e colaborei na modernização de sistemas governamentais. Trabalhei com tecnologias como C# e Node.js, utilizando bancos de dados MSSQL e infraestrutura Docker. Participei de projetos que impactaram diretamente os serviços digitais do estado de Mato Grosso do Sul.",
-      link: "#"
-    },
-    {
-      company: "Easynet",
-      title: "Software Engineer",
-      badges: [],
-      start: "Janeiro 2018",
-      end: "Janeiro 2019",
-      description: "Atuei no desenvolvimento full-stack de diversos projetos, participando da criação de novos sistemas e manutenção de aplicações legadas. Contribuí para o desenvolvimento de sistemas internos para clientes, incluindo projetos estratégicos na Sanesul. Trabalhei com tecnologias como C#, Node.js e Vue.js, participando da arquitetura de soluções e implementação de funcionalidades que atendiam às necessidades específicas dos clientes.",
-      link: "#"
-    },
-    {
-      company: "CompNet",
-      title: "Software Engineer",
-      badges: [],
-      start: "Janeiro 2017",
-      end: "Janeiro 2018",
-      description: "Participei do desenvolvimento de um sistema de gerenciamento de despacho de viaturas (CADG), colaborando na criação de uma solução inovadora para o setor. Utilizei tecnologias como C#, Node.js e Vue.js para implementar funcionalidades do produto. Contribuí para o desenvolvimento de features e prestei suporte técnico, participando ativamente do ciclo completo de desenvolvimento do sistema.",
-      link: "#"
-    }
-  ],
-  skills: [
-    "Go",
-    "Microservices Architecture",
-    "Protobuf",
-    "gRPC",
-    "Docker",
-    "JavaScript",
-    "TypeScript",
-    "GraphQL",
-    "Twilio (Studio, TaskRouter, Functions, Flex, Autopilot)",
-    "MongoDB",
-    "Vue.js"
-  ],
-  projects: []
+    education: [
+      {
+        school: "Estacio",
+        degree: "Systems Analysis and Development, Information Technology",
+        start: "2018",
+        end: "2021",
+      },
+    ],
+    work: [
+      {
+        company: "Worten",
+        title: "Software Engineer",
+        badges: ["Remote"],
+        start: "May 2024",
+        end: "Present",
+        description:
+          "Build microservices in Golang with gRPC and Kafka, contributing to scalable and reliable architecture. Work on database design, observability, metrics, and AWS service integrations. Also contribute to quality strategy through unit, integration, and end-to-end testing.",
+        link: "https://worten.pt",
+      },
+      {
+        company: "Bexs",
+        title: "Software Engineer",
+        badges: ["Remote"],
+        start: "August 2022",
+        end: "January 2024",
+        description:
+          "Worked on the compliance team, building Golang microservices and test automation for regulatory workflows. Implemented integration and end-to-end tests with Karate, along with scalable Google Cloud Platform solutions that improved system robustness and regulatory reliability.",
+        link: "https://bexs.com.br",
+      },
+      {
+        company: "Soma Tech",
+        title: "Software Engineer",
+        badges: ["Remote"],
+        start: "June 2021",
+        end: "January 2024",
+        description:
+          "Built microservices with Golang and gRPC, mobile applications with Flutter, and components for distributed systems. Collaborated on architecture, data modeling, observability, AWS provisioning, and automated testing pipelines.",
+        link: "https://somatech.solutions/",
+      },
+      {
+        company: "Dasa",
+        title: "Software Engineer",
+        badges: ["Remote"],
+        start: "June 2021",
+        end: "June 2022",
+        description:
+          "Built IVRs, chatbots, and customer-service automations with Twilio Studio, TaskRouter, Functions, Flex, and Autopilot. Created serverless Node.js applications and helped optimize automated service channels to improve operational efficiency and user experience.",
+        link: "#",
+      },
+      {
+        company: "Upnid",
+        title: "Software Engineer",
+        badges: ["Remote"],
+        start: "May 2020",
+        end: "May 2021",
+        description:
+          "Contributed to a payment gateway by building and maintaining Golang and gRPC microservices. Worked on critical components including Single Sign-On, centralized logging, and WhatsApp integration through Twilio.",
+        link: "#",
+      },
+      {
+        company: "SGI - Superintendencia de Gestao da Informacao",
+        title: "Software Engineer",
+        badges: [],
+        start: "February 2019",
+        end: "May 2020",
+        description:
+          "Worked on full-stack projects for government digital services, including legacy maintenance and new feature development. Contributed to the backend of the MS Digital application using C#, Node.js, MSSQL, and Docker.",
+        link: "#",
+      },
+      {
+        company: "Easynet",
+        title: "Software Engineer",
+        badges: [],
+        start: "January 2018",
+        end: "January 2019",
+        description:
+          "Built internal systems and custom applications for clients, including strategic projects for Sanesul. Worked with C#, Node.js, and Vue.js on maintenance, new features, and architectural improvements.",
+        link: "#",
+      },
+      {
+        company: "CompNet",
+        title: "Software Engineer",
+        badges: [],
+        start: "January 2017",
+        end: "January 2018",
+        description:
+          "Helped develop a vehicle dispatch management system, implementing product features and providing technical support. Worked with C#, Node.js, and Vue.js throughout the product development lifecycle.",
+        link: "#",
+      },
+    ],
+    skills: [
+      "Go",
+      "Microservices Architecture",
+      "Distributed Systems",
+      "Protobuf",
+      "gRPC",
+      "Kafka",
+      "Docker",
+      "AWS",
+      "Google Cloud Platform",
+      "JavaScript",
+      "TypeScript",
+      "Node.js",
+      "GraphQL",
+      "Twilio",
+      "MongoDB",
+      "Vue.js",
+      "Flutter",
+    ],
+    projects: [],
+  },
 } as const;
+
+export function isLocale(locale: string | undefined): locale is Locale {
+  return LOCALES.includes(locale as Locale);
+}
+
+export function getResumeData(locale: Locale = DEFAULT_LOCALE): ResumeData {
+  return {
+    ...COMMON_RESUME_DATA,
+    ...RESUME_LOCALE_DATA[locale],
+  };
+}

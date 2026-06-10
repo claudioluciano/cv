@@ -1,11 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export',
+  output: "export",
 
-    reactStrictMode: true,
+  reactStrictMode: true,
 
-    // Add basePath
-    basePath: '/cv',
-}
+  basePath: "/cv",
 
-module.exports = nextConfig
+  compress: true,
+
+  productionBrowserSourceMaps: false,
+
+  poweredByHeader: false,
+};
+
+module.exports = nextConfig;

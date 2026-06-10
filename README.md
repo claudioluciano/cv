@@ -1,65 +1,71 @@
 ![cv](https://github.com/BartoszJarocki/cv/assets/1017620/79bdb9fc-0b20-4d2c-aafe-0526ad4a71d2)
 
-# Minimalist CV
+# Claudio Luciano CV
 
-Simple web app that renders minimalist CV with print-friendly layout.
+Simple web app that renders a minimalist, print-friendly CV.
 
-Built with Next.js and shadcn/ui, deployed on Vercel.
+Built with Next.js, React, shadcn/ui, Tailwind CSS, and Biome.
 
 # Features
 
-- Setup only takes a few minutes [single config file](./src/data/resume-data.tsx)
-- Built using Next.js 14, React, Typescript, Shadcn/ui, TailwindCss
-- Auto generated Layout
-- Responsive for different devices
-- Optimized for Next.js and Vercel
+- Portuguese and English routes: `/pt` and `/en`
+- Default Portuguese CV at `/`
+- Print-friendly layout
+- Static export under `/cv`
+- Localized content in [src/data/resume-data.tsx](./src/data/resume-data.tsx)
+- Structured data and sitemap for search engines
+- Built using Next.js 16, React 19, TypeScript, shadcn/ui, Tailwind CSS, and Biome
 
 # Getting Started Locally
 
-1. Clone this repository to your local machine:
+1. Install dependencies:
 
    ```bash
-   git clone https://github.com/BartoszJarocki/cv.git
+   npm install
    ```
 
-2. Move to the cloned directory
+2. Start the local server:
 
    ```bash
-   cd cv
+   npm run dev
    ```
 
-3. Install dependencies:
+3. Open the local app:
 
-   ```bash
-   yarn install
-   ```
+   - Portuguese: http://localhost:3000/cv or http://localhost:3000/cv/pt
+   - English: http://localhost:3000/cv/en
 
-4. Start the local Server:
+4. Edit CV content in [src/data/resume-data.tsx](./src/data/resume-data.tsx).
 
-   ```bash
-   yarn dev
-   ```
+# Scripts
 
-5. Open the [Config file](./src/data/resume-data.tsx) and make changes
+```bash
+npm run dev
+npm run build
+npm run check
+npm run check:fix
+npm run format
+npm run format:fix
+```
 
-# Run with Docker
+# Docker
 
-Build the containewr
+Build the container:
 
 ```
 docker compose build
 ```
 
-Run the container
+Run the container:
 
 ```
 docker compose up -d
 ```
 
-Stop the Container
+Stop the container:
 
 ```
-docker compose down 
+docker compose down
 ```
 
 # License
